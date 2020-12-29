@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Booking</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }	
+            th, td {
+                padding: 5px;
+                text-align: left;    
+            }
+
+            table.center {
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2 style="text-align: center">Successful Booking!!!</h2>
+        <table class="center">
+            <caption>Booking Detail</caption>
+            <tr>
+                <th>Booking number</th>
+                <td th:text="${booking.bookingNumber}"></th>
+            </tr>
+            <tr>
+                <th>Booking Date</th>
+                <td th:text="${#dates.format(booking.bookingDate, 'dd-MM-yyyy')}"></td>
+            </tr>
+            <tr>
+                <th>Checkin</th>
+                <td th:text="${#dates.format(booking.checkin, 'dd-MM-yyyy')}"></td>
+            </tr>
+            <tr>
+                <th>Checkout</th>
+                <td th:text="${#dates.format(booking.checkout, 'dd-MM-yyyy')}"></td>
+            </tr>
+            <tr>
+                <th>TotalPrice</th>
+                <td th:text="${#numbers.formatDecimal(booking.totalPrice, 0, 'COMMA', 0, 'POINT')}"></td>
+            </tr>
+            <tr>
+                <th>Full Name</th>
+                <td th:text="${booking.fullName}"></td>
+            </tr>
+            <tr>
+                <th>ID Card</th>
+                <td th:text="${booking.cardId}"></td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td th:text="${booking.phone}"></td>
+            </tr>
+        </table>
+        <p style="text-align: center">For details, please click on this link: 
+            <a th:href="@{'http://localhost:8081' + ${confirmationUrl}}">CANCEL ROOM</a></p>
+    </body>
+</html>
